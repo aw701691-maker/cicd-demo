@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        run: npx jest
+        run: ./node_modules/.bin/jest
 
   # Stage 2 - Deploy (only if tests pass)
   deploy:
