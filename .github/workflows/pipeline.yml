@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        run: jest --testPathPattern=app.test.js
+        run: jest app.test.js
 
   deploy:
     needs: build-and-test
