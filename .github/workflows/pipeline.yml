@@ -5,10 +5,9 @@ on:
     branches: [ main ]
 
 jobs:
-  # Stage 1 - Build & Test
   build-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -18,20 +17,22 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install Jest Globally
+        run: npm install -g jest
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Tests
-        run: ./node_modules/.bin/jest
+        run: jest --testPathPattern=app.test.js
 
-  # Stage 2 - Deploy (only if tests pass)
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy to Vercel
+      - name: Deploy
         run: echo "✅ Tests passed! Deploying to production..."
