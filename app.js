@@ -3,7 +3,7 @@ function add(a, b) {
 }
 
 function multiply(a, b) {
-  return a * b;
+  return a / b; //intetional bug
 }
 
 module.exports = { add, multiply };
